@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RedisApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+      }
+      .header {
+        background-color: #f1f1f1;
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+      }
+      a {
+        color: #000;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #000;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .navbar a {
+        margin: 0 10px;
+      }
+      .container {
+        padding: 20px;
+
+      }
+
+    </style>
+    <div class="header">
+      <%= link_to "Home", root_path %>
+      <div class="navbar">
+      <% if session[:user_id] %>
+        <%= link_to "clear your bookmark", logout_path, method: :delete %>
+        <%= link_to "bookmark", user_path %>
+      <% else %>
+        <%= link_to "Login", login_path %>
+        <%= link_to "Signup", signup_path %>
+      <% end %>
+      </div>
+    </div>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>

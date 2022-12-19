@@ -1,0 +1,7 @@
+<h1>Bookmarks#index</h1>
+<p>click link below to add bookmark</p>
+<% @bookmarks.each do |bookmark| %>
+  <p>
+    <%= link_to bookmark.title, add_bookmark_path(bookmark.id), method: :post %>
+  </p>
+<% end %>
